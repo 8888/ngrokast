@@ -1,7 +1,7 @@
 # ngrokast
 A simple way to broadcast your free version [ngrok](https://ngrok.com/) url to your phone.
 
-## Run
+## Usage
 You can run ngrok in the background by sending stdout to the null device and broadcast the url using ngrokast.
 ```bash
 $ ngrok http 80 > /dev/null & ngrokast
@@ -15,3 +15,13 @@ $ ngrokast
 ## Dependencies
 - [curl](https://curl.haxx.se/)
 - [jq](https://stedolan.github.io/jq/)
+
+## Local execution
+### broadcast
+```bash
+$ sls invoke local --function broadcast -d '{"url":"http://example.com"}'
+```
+### fetch
+```bash
+$ sls invoke local --function fetch
+```

@@ -1,0 +1,23 @@
+service: ngrokast
+
+provider:
+  name: aws
+  runtime: nodejs6.10
+
+functions:
+  fetch:
+    handler: handler.fetch
+    events:
+      - http:
+          path: fetch
+          method: get
+          cors: true
+          private: true
+  broadcast:
+    handler: handler.broadcast
+    events:
+      - http:
+          path: broadcast
+          method: post
+          cors: true
+          private: true
