@@ -1,5 +1,10 @@
 service: ngrokast
 
+package:
+  individually: true
+  exclude:
+    - ./**
+
 provider:
   name: aws
   runtime: nodejs6.10
@@ -9,6 +14,9 @@ provider:
 functions:
   fetch:
     handler: handler.fetch
+    package:
+      include:
+        - handler.js
     events:
       - http:
           path: fetch
@@ -17,6 +25,9 @@ functions:
           private: true
   broadcast:
     handler: handler.broadcast
+    package:
+      include:
+        - handler.js
     events:
       - http:
           path: broadcast
