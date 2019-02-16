@@ -1,0 +1,14 @@
+{
+  "name": "ngrokast",
+  "version": "1.0.0",
+  "description": "A simple way to broadcast your free version ngrok url to your phone",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Lee Costello",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.404.0"
+  }
+}

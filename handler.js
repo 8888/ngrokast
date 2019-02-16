@@ -13,35 +13,3 @@ module.exports.fetch = (event, context, callback) => {
 
   callback(null, response);
 };
-
-module.exports.broadcast = (event, context, callback) => {
-  let url,
-      statusCode,
-      body;
-
-  try {
-    const payload = JSON.parse(event.body);
-    url = payload.url;
-  }
-  catch(error) {
-    url = event.url;
-  }
-
-  if (url) {
-    statusCode = 200;
-    body = JSON.stringify({url});
-  } else {
-    statusCode = 400;
-    body = JSON.stringify({event, message: 'no url provided'});
-  }
-
-  const response = {
-    statusCode,
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-    },
-    body,
-  };
-
-  callback(null, response);
-};

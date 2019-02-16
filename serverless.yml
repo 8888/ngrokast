@@ -24,10 +24,11 @@ functions:
           cors: true
           private: true
   broadcast:
-    handler: handler.broadcast
+    handler: broadcast/handler.broadcast
     package:
       include:
-        - handler.js
+        - ./broadcast/**
+        - ./secrets.json
     events:
       - http:
           path: broadcast
