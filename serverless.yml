@@ -13,10 +13,11 @@ provider:
 
 functions:
   fetch:
-    handler: handler.fetch
+    handler: fetch/handler.fetch
     package:
       include:
-        - handler.js
+        - ./fetch/**
+        - ./secrets.json
     events:
       - http:
           path: fetch
