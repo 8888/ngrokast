@@ -15,16 +15,24 @@ module.exports.fetch = (event, context, callback) => {
 };
 
 module.exports.broadcast = (event, context, callback) => {
-  const url = event.url;
-  let statusCode,
+  let url,
+      statusCode,
       body;
+
+  try {
+    const payload = JSON.parse(event.body);
+    url = payload.url;
+  }
+  catch(error) {
+    url = event.url;
+  }
 
   if (url) {
     statusCode = 200;
     body = JSON.stringify({url});
   } else {
     statusCode = 400;
-    body = JSON.stringify({url: '', message: 'no url provided'})
+    body = JSON.stringify({event, message: 'no url provided'});
   }
 
   const response = {
@@ -36,4 +44,4 @@ module.exports.broadcast = (event, context, callback) => {
   };
 
   callback(null, response);
-}
+};
